@@ -120,6 +120,7 @@ COM_BAUD                = config.get("Serial Port","COM_BAUD", fallback=115200)
 
 EVENTS_FILE             = config.get("Files", "EVENTS_FILE", fallback="events.log")
 PACKET_LOG_FILE         = config.get("Files", "PACKET_LOG_FILE", fallback="packet.log")
+#PACKET_LOG_FILE         = config.get("Files", "PACKET_LOG_FILE")
 LOG_FILE_ROTATE_COUNT   = config.getint("Files", "LOG_FILE_ROTATE_COUNT", fallback=9)
 LOG_FILE_ROTATE_BYTES   = config.getint("Files", "LOG_FILE_ROTATE_BYTES", fallback=1000000)
 
@@ -199,7 +200,7 @@ formatter = logging.Formatter('%(asctime)s [%(lineno)s] %(message)s')
 # Log file handler
 file_handler = RotatingFileHandler(EVENTS_FILE, maxBytes=LOG_FILE_ROTATE_BYTES,
     backupCount=LOG_FILE_ROTATE_COUNT)
-file_handler.setLevel(logging.INFO)
+file_handler.setLevel(logging.ERROR)
 file_handler.setFormatter(formatter)
 log.addHandler(file_handler)
 
