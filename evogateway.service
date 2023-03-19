@@ -1,17 +1,15 @@
 [Unit]
 Description=MQTT gateway for evohome (Python) 
-After=syslog.target network.target mosquitto.service usbip_bind.service
-OnFailure=/opt/scripts/telegram/unit-status-telegram.sh@n.service
+After=syslog.target network.target usbip_bind.service
 
 [Service]
 Type=simple
 StandardOutput=syslog
 StandardError=syslog
 SyslogIdentifier=evoGateway
-User=root
-WorkingDirectory=/opt/scripts/evohome/evogateway
-ExecStart=/opt/scripts/evohome/evogateway/evogateway.sh --log /var/log/evogateway.log 
-ExecStopPost=/opt/scripts/telegram/unit-status-telegram.sh evogateway $SERVICE_RESULT $EXIT_CODE $EXIT_STATUS 
+User=david
+WorkingDirectory=/home/david/evoGateway
+ExecStart=/home/david/evoGateway/evogateway.py --log /var/log/evogateway.log 
 Restart=on-failure
 RestartSec=30
 KillMode=process
