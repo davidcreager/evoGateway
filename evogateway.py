@@ -193,7 +193,7 @@ LAST_SEND_MSG = None
 # -----------------------------------
 
 log = logging.getLogger("evogateway_log")
-log.setLevel(logging.DEBUG)
+log.setLevel(logging.ERROR)
 formatter = logging.Formatter('%(asctime)s [%(lineno)s] %(message)s')
 # %(funcName)20s() [%(levelname)s]
 
